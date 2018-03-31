@@ -15,11 +15,11 @@ namespace DurableTask.AzureStorage.Tests
 
             var service = new AzureStorageOrchestrationService(
                 new AzureStorageOrchestrationServiceSettings
-                {
+               {
                     StorageConnectionString = storageConnectionString,
                     TaskHubName = ConfigurationManager.AppSettings.Get("TaskHubName"),
-                });
-
+               });
+            //, new AzureTableInstanceStore(ConfigurationManager.AppSettings.Get("TaskHubName"), storageConnectionString)
             service.CreateAsync().GetAwaiter().GetResult();
 
             return new TestOrchestrationHost(service);
