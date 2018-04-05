@@ -1,0 +1,58 @@
+﻿<Project Sdk="Microsoft.NET.Sdk">
+
+	<Import Project="$([MSBuild]::GetDirectoryNameOfFileAbove($(MSBuildThisFileDirectory),DurableTask.sln))\tools\DurableTask.props" />
+	<PropertyGroup>
+		<TargetFramework>net451</TargetFramework>
+	</PropertyGroup>
+
+	<ItemGroup>
+		<PackageReference Include="CommandLineParser" version="1.9.71" />
+		<PackageReference Include="EnterpriseLibrary.SemanticLogging" version="2.0.1406.1" />
+		<PackageReference Include="ImpromptuInterface" version="6.2.2" />
+		<PackageReference Include="Microsoft.Azure.KeyVault.Core" version="1.0.0" />
+		<PackageReference Include="Microsoft.Data.Edm" version="5.8.2" />
+		<PackageReference Include="Microsoft.Data.OData" version="5.8.2" />
+		<PackageReference Include="Microsoft.Data.Services.Client" version="5.8.2" />
+		<PackageReference Include="Microsoft.NET.Test.Sdk" Version="15.0.0" />
+		<PackageReference Include="Microsoft.Tpl.Dataflow" version="4.5.24" />
+		<PackageReference Include="Microsoft.WindowsAzure.ConfigurationManager" version="3.2.1" />
+		<PackageReference Include="MSTest.TestAdapter" Version="1.1.11" />
+		<PackageReference Include="MSTest.TestFramework" Version="1.1.11" />
+		<PackageReference Include="Newtonsoft.Json" version="10.0.3" />
+		<PackageReference Include="System.Spatial" version="5.8.2" />
+		<PackageReference Include="WindowsAzure.ServiceBus" version="3.1.7" />
+		<PackageReference Include="WindowsAzure.Storage" version="8.5.0" />
+		<PackageReference Include="System.ComponentModel.EventBasedAsync" version="4.0.11" />
+    	<PackageReference Include="System.Dynamic.Runtime" version="4.0.0" />
+    	<PackageReference Include="System.Linq.Queryable" version="4.0.0" />
+    	<PackageReference Include="System.Net.Requests" version="4.0.11" />
+	</ItemGroup>
+	
+	<ItemGroup>
+		<ProjectReference Include="..\..\src\DurableTask.Core\DurableTask.Core.csproj" />
+		<ProjectReference Include="..\..\src\DurableTask.ServiceBus\DurableTask.ServiceBus.csproj" />
+		<ProjectReference Include="..\DurableTask.Core.Tests\DurableTask.Core.Tests.csproj" />
+		<ProjectReference Include="..\DurableTask.Test.Orchestrations\DurableTask.Test.Orchestrations.csproj" />
+	</ItemGroup>	
+	
+	<ItemGroup>
+		<Reference Include="System.Configuration" />
+	</ItemGroup>
+
+	<ItemGroup>
+		<Service Include="{82a7f48d-3b50-4b1e-b82e-3ada8210c358}" />
+	</ItemGroup>
+
+	<ItemGroup>
+	  <None Update="TestData\SerializedExecutionStartedEvent.json">
+	    <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+	  </None>
+	  <None Update="TestData\SerializedOrchestrationState.json">
+	    <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+	  </None>
+	  <None Update="TestData\SerializedOrchestrationStateWithTags.json">
+	    <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+	  </None>
+	</ItemGroup>
+	
+</Project>
